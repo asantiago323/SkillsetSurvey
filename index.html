@@ -31,7 +31,7 @@
             <div id="surveyInput">
                 <ol>
                     <li ng-repeat="list in lists">
-                        <p>{{list.category}} | {{list.skill}}</p>
+                        <p>{{list.category}} | {{list.skill}} rating: {{list.rate}}</p>
                     </li>
                 </ol>
             </div>
@@ -47,6 +47,16 @@
             <!-- Skill Name -->
             <label for="skill">Skill Name</label>
             <input type="text" id="skill" placeholder="AngularJS/C#/Java/SQL/etc." ng-model="newSkill" required/>
+
+            <!-- Rating -->
+            <label for="rate">Skill Name</label>
+            <select type="text" id="rate" placeholder="AngularJS/C#/Java/SQL/etc." ng-model="newRate" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
 
             <!-- Submit to List -->
             <button ng-disabled="frm.$invalid">Add Skill Rating</button>
