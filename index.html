@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html ng-app="surveyApp">
-    <head>
-            <title>Skillset Survey App</title>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-            <script type="text/javascript" src="lib/angular/angular-route.min.js"></script>
-    </head>
-    <body ng-controller="surveyCtrl">
-            <!-- Navigation -->
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Skillset Survey</a>
-                </div>
-                <div>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Survey<span class="sr-only">(current)</span></a></li>
-                        <li><a href="/info">Brief Info</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container">
-            <div id="userName">
-                <label for="user">Name:</labelfor> <input name="user" id="user" type="text" placeholder="Last, First Name">
-            </div> <!-- div for Developer's Name  -->
-            <div id="surveyInput" ng-controller="surveyCtrl">
 
+<head>
+    <title>Skillset Survey App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+</head>
+
+<body ng-controller="surveyCtrl">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Skillset Survey</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Survey<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/info">Brief Info</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="userName">
+            <label for="user">Name:</labelfor> <input name="user" id="user" type="text" placeholder="Last, First Name">
+            </div> <!-- div for Developer's Name  -->
+            <div id="surveyInput">
+                <ol>
+                    <li ng-repeat="list in lists">
+                        <p>{{list.category}} | {{list.skill}}</p>
+                    </li>
+                </ol>
             </div>
         </div>
         <nav class="navbar navbar-default navbar-fixed-bottom">
-                <div class="container" ng-controller="addCtrl">
+                <div class="container">
                     <form name="frm" ng-submit="addToList()">
                         <div class="bot-left">
                             <!-- Category -->
                             <label for="category">Category</label>
-                            <input type="text" id="category" placeholder="Frontend/Backend/DataBase/etc.">
+            <input type="text" id="category" placeholder="Frontend/Backend/DataBase/etc." ng-model="newCat" required/>
 
-                            <!-- Skill Name -->
-                            <label for="skill">Skill Name</label>
-                            <input type="text" id="skill" placeholder="AngularJS/C#/Java/SQL/etc.">
-                        </div>
-                    </form>
-                    <div class="bot-right">
-                        <a class="navbar-brand" href="#/">Add to dropdowns</a>
-                    </div>
-                </div>
-            </nav>
-    </body>
+            <!-- Skill Name -->
+            <label for="skill">Skill Name</label>
+            <input type="text" id="skill" placeholder="AngularJS/C#/Java/SQL/etc." ng-model="newSkill" required/>
+
+            <!-- Submit to List -->
+            <button ng-disabled="frm.$invalid">Add Skill Rating</button>
+        </div>
+        </form>
+        <div class="bot-right">
+            <a class="navbar-brand" href="#/">Add to dropdowns</a>
+        </div>
+    </div>
+    </nav>
+    <script src="js/app.js"></script>
+</body>
+
 </html>

@@ -1,13 +1,10 @@
-angular.module('surveyApp', []).
-controller('surveyCtrl', ['$scope', function($scope){
-    $scope.list = [];
+angular.module("surveyApp", []).controller("surveyCtrl", [
+  "$scope",
+  function($scope) {
+    $scope.lists = [{ category: "Frontend", skill: "AngularJS" }];
 
-    $scope.addToList() = function(){}
-    $scope.submit() = function(){}
-}]).
-controller('addCtrl', ['$scope', function($scope){
-    $scope.skillset = {
-        'category' : 'Frontend',
-        'skill' : 'AngularJS'
+    $scope.addToList = function() {
+      $scope.lists.push({ category: $scope.newCat, skill: $scope.newSkill });
     };
-}])
+  }
+]);
